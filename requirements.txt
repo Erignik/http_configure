@@ -1,0 +1,4 @@
+configparser==5.0.0
+Flask==1.1.2
+Flask-Cors==3.0.8
+redis==3.5.3

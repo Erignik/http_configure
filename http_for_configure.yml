@@ -1,0 +1,7 @@
+http_configure:
+  image: http_configure:latest
+  restart: always
+  ports:
+    - 7778:7778
+  volumes:
+   - /data/configure/http_configure/app:/usr/src/app

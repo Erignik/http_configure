@@ -2,14 +2,14 @@
 <root>
     <moc type="1" name="MocAudio">
         <para type="1" key="1" name="AUDIOID">主键</para>
-        <para type="1" key="0" name="AUDIOMSG">用于播放的消息内容</para>
+        <para type="1" key="0" name="AUDIOMSG" default_value="">用于播放的消息内容</para>
     </moc>
     <moc type="1" name="MocUser">
         <para type="1" key="1" name="MAC">MAC地址</para>
-        <para type="1" key="0" name="IP">MAC ID</para>
+        <para type="1" key="0" name="IP" default_value="">MAC ID</para>
     </moc>
     <moc type="1" name="MocUserALias">
         <para type="1" key="1" name="MAC">MAC地址</para>
-        <para type="1" key="0" name="NAME">MAC ID</para>
+        <para type="1" key="0" name="NAME" default_value="">MAC ID</para>
     </moc>
 </root>

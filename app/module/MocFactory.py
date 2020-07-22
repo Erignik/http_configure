@@ -38,6 +38,7 @@ class MocSingleton:
                 is_key = para.attrib.get('key', None)
                 para_name = para.attrib.get('name', None)
                 para_type = para.attrib.get('type', None)
+                default_value = para.attrib.get('default_value', None)
                 if None not in para.attrib.values():
-                    moc_obj.add_para(para_type, para_name, is_key)
+                    moc_obj.add_para(para_type, para_name, is_key, default_value)
             self.add_moc(moc.attrib['name'], moc_obj)

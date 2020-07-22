@@ -3,10 +3,13 @@ from flask import request
 from flask import Flask
 from flask import jsonify
 from flask_cors import CORS
+from flask_apscheduler import APScheduler
+from timer.Conf import TimerConfig
 
 
 app = Flask(__name__)
 CORS(app, resources=r'/*')
+app.config.from_object(TimerConfig())
 
 
 @app.route('/', methods=['GET'])
@@ -27,4 +30,7 @@ def post_data():
 
 
 if __name__ == '__main__':
+    scheduler = APScheduler()
+    scheduler.init_app(app)
+    scheduler.start()
     app.run(debug=False, host='0.0.0.0', port=7778)

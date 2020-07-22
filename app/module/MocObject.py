@@ -9,8 +9,8 @@ class MocObject(ObjectBase):
         super(MocObject, self).__init__(obj_name)
         self.__para_lst = []
 
-    def add_para(self, para_type, para_name, is_key):
-        para_obj = build_para(para_type, para_name, is_key)
+    def add_para(self, para_type, para_name, is_key, default_value):
+        para_obj = build_para(para_type, para_name, is_key, default_value)
         if para_obj is None:
             return
         self.__para_lst.append(para_obj)

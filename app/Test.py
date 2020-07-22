@@ -15,13 +15,13 @@ def lst_moc():
 
 
 if __name__ == "__main__":
-    cmd = 'Mod MocAudio:AUDIOID=1,AUDIOMSG="金小笨";'
-    cmd_obj = get_cmd_obj(cmd)
-    if cmd_obj is not None:
-        cmd_obj.execute()
+    #cmd = 'Mod MocAudio:AUDIOID=1,AUDIOMSG="金小笨";'
+    #cmd_obj = get_cmd_obj(cmd)
+    #if cmd_obj is not None:
+    #    cmd_obj.execute()
     lst_moc()
-    cmd = 'rmv MocAudio:AUDIOID=1;'
-    cmd_obj = get_cmd_obj(cmd)
-    if cmd_obj is not None:
-        cmd_obj.execute()
-    lst_moc()
+    #cmd = 'rmv MocAudio:AUDIOID=1;'
+    #cmd_obj = get_cmd_obj(cmd)
+    #if cmd_obj is not None:
+    #    cmd_obj.execute()
+    #lst_moc()

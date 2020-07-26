@@ -18,6 +18,10 @@ class MocSingleton:
             return None
         return self.__moc_object_list[moc_name]
 
+    @property
+    def moc_object_list(self):
+        return self.__moc_object_list
+
     @classmethod
     def get_instance(cls):
         if not cls.__instance:

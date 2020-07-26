@@ -22,19 +22,22 @@ class MocObject(ObjectBase):
                 key_para.append(para.get_obj_name())
         return key_para
 
-    def get_all_para(self):
-        para_lst = []
+    def get_all_para_name(self):
+        para_lst_name = []
         for para in self.__para_lst:
-            para_lst.append(para.get_obj_name())
-        return para_lst
+            para_lst_name.append(para.get_obj_name())
+        return para_lst_name
 
     def pre_add_cmd_check(self, para_2_val):
+        self.__para_lst = self.__para_lst
         return True, ""
 
     def pre_mod_cmd_check(self, para_2_val):
+        self.__para_lst = self.__para_lst
         return True, ""
 
     def pre_rmv_cmd_check(self, para_2_val):
+        self.__para_lst = self.__para_lst
         return True, ""
 
 

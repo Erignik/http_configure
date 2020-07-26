@@ -61,7 +61,7 @@ class DbRedis(DbBase):
         try:
             tbl_key = self._get_table_key(tbl_name, key_dict)
             if self.__connect.exists(tbl_key) == 0:
-                return False, "rmv table %s not exist...."
+                return False, "rmv table %s not exist...." % tbl_name
 
             self.__connect.delete(tbl_key)
             return True, "rmv success...."

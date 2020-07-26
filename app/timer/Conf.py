@@ -2,9 +2,8 @@ class TimerConfig(object):
     JOBS = [
         {
             'id': 'job1',
-            'func': 'timer.CheckDefaultValue:check',
-            'args': (1, 2),
+            'func': 'timer.CheckDefaultValue:check_default_value',
             'trigger': 'interval',
-            'seconds': 5
+            'seconds': 10
         }
     ]

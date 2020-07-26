@@ -31,7 +31,7 @@ class ModCmd(CmdBase):
             return False, "ModCmd, Error cmd name...."
 
         key_para_lst = moc_obj.get_key_para()
-        all_para_lst = moc_obj.get_all_para()
+        all_para_lst = moc_obj.get_all_para_name()
         if not self.check_mod_para(para_2_val, key_para_lst, all_para_lst):
             return False, "cmd is Mod, input key para should consist with module...."
 

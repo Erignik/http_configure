@@ -15,6 +15,8 @@ def lst_moc():
 
 
 if __name__ == "__main__":
+    cmd = 'ADD MOCEXTRAINFO:NAME=%s, INFO=%s;' % ('moc_name'.upper(), 'This_para_is_in_db_but_not_in_xml:audiosss&audiosss1_This_para_is_in_db_but_not_in_xml:audiosss&audiosss1'.upper())
+    cmd_obj = get_cmd_obj(cmd)
     #cmd = 'Mod MocAudio:AUDIOID=1,AUDIOMSG="金小笨";'
     #cmd_obj = get_cmd_obj(cmd)
     #if cmd_obj is not None:

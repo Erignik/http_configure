@@ -11,7 +11,7 @@ class AddCmd(CmdBase):
 
     @classmethod
     def check_para_consist(cls, moc_obj, para_2_val):
-        para_lst = moc_obj.get_all_para()
+        para_lst = moc_obj.get_all_para_name()
         if len(para_lst) != len(para_2_val):
             return False
 

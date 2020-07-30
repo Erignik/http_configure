@@ -1,5 +1,6 @@
 import re
 from cmd.macro import *
+from log.log import logger
 
 
 class CmdTextHandle:
@@ -7,6 +8,7 @@ class CmdTextHandle:
     def get_raw_cmd(cls, cmd):
         cmd = cmd.upper()
         if cmd.count(':') < 1:
+            logger.error('cmd has not :, cmd is %s.' % cmd)
             return None
         m = cmd.find(':')
         cmd_name = cmd[:m]
@@ -29,9 +31,11 @@ class CmdTextHandle:
     def get_cmd_type(cls, cmd):
         raw_cmd = cls.get_raw_cmd(cmd)
         if raw_cmd is None:
+            logger.error('get raw cmd fail, cmd is %s.' % cmd)
             return CMD_TYPE_BUTT
 
         if not cls.is_cmd_valid(raw_cmd):
+            logger.error('raw cmd %s is invalid.' % raw_cmd)
             return CMD_TYPE_BUTT
 
         m = raw_cmd.find(':')
@@ -49,14 +53,11 @@ class CmdTextHandle:
 
     @classmethod
     def parse_cmd(cls, cmd):
-        """
-        :param cmd: should be raw cmd
-        :return: (True, False), moc_name, {para: value}
-        """
         m = cmd.find(':')
         cmd_name = cmd[:m]
         para_info = cmd[m:].strip(':')
         if " " not in cmd_name:
+            logger.error('cmd_name format error, cmd_name is %s.' % cmd_name)
             return False, '', {}
         moc_name = cmd_name.split(' ')[1]
 
@@ -68,6 +69,7 @@ class CmdTextHandle:
                 continue
 
             if '=' not in raw_para:
+                logger.error('para format error, raw_para is %s.' % raw_para)
                 return False, moc_name, {}
 
             para, value = raw_para.split('=')

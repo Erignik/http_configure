@@ -3,6 +3,7 @@ from module.MocFactory import MocSingleton
 from cmd.CmdTextHandle import CmdTextHandle
 from db.DbInterface import DbSingleton
 from comm.macro import *
+from log.log import logger
 
 
 class ModCmd(CmdBase):
@@ -13,9 +14,11 @@ class ModCmd(CmdBase):
     def check_mod_para(cls, para_2_val, key_para_lst, all_para_lst):
         for key_para in key_para_lst:
             if key_para not in para_2_val:
+                logger.error("key_para %s not in para_2_val %s." % (key_para, para_2_val))
                 return False
         for para in para_2_val.keys():
             if para not in all_para_lst:
+                logger.error("para %s not in all_para_lst %s." % (para, all_para_lst))
                 return False
 
         return True
@@ -23,11 +26,13 @@ class ModCmd(CmdBase):
     def execute(self):
         is_suc, moc_name, para_2_val = CmdTextHandle.parse_cmd(self.cmd)
         if not is_suc:
+            logger.error("parse_cmd error, cmd is [%s]." % self.cmd)
             return False, "ModCmd, Error cmd format...."
 
         moc_ins = MocSingleton.get_instance()
         moc_obj = moc_ins.get_moc(moc_name)
         if moc_obj is None:
+            logger.error("can not get moc, moc_name is [%s]." % moc_name)
             return False, "ModCmd, Error cmd name...."
 
         key_para_lst = moc_obj.get_key_para()
@@ -37,6 +42,7 @@ class ModCmd(CmdBase):
 
         ret_flag, error_info = moc_obj.pre_mod_cmd_check(para_2_val)
         if not ret_flag:
+            logger.error("pre_mod_cmd_check fail. ret is %s, error info is %s." % (ret_flag, error_info))
             return ret_flag, error_info
 
         key_dict = {para: val for para, val in para_2_val.items() if para in key_para_lst}

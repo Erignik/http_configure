@@ -1,6 +1,7 @@
 from db.DbBase import DbBase
 from redis import StrictRedis
 from comm.macro import *
+from log.log import logger
 
 
 def connect_wrapper(func):
@@ -26,6 +27,7 @@ class DbRedis(DbBase):
                 query_result.append(info_dict)
             return True, query_result
         except Exception as e:
+            logger.error("query error, info is %s." % str(e))
             return False, str(e)
 
     @classmethod
@@ -37,11 +39,13 @@ class DbRedis(DbBase):
         try:
             tbl_key = self._get_table_key(tbl_name, key_dict)
             if self.__connect.exists(tbl_key) != 0:
-                return False, "add table %s already exist...."
+                logger.info("add table %s already exist...." % tbl_name)
+                return False, "add table %s already exist...." % tbl_name
             para_dict.update(key_dict)
             self.__connect.hmset(tbl_key, para_dict)
             return True, "add success...."
         except Exception as e:
+            logger.error("_execute_add, info is %s." % str(e))
             return False, str(e)
 
     @connect_wrapper
@@ -49,11 +53,13 @@ class DbRedis(DbBase):
         try:
             tbl_key = self._get_table_key(tbl_name, key_dict)
             if self.__connect.exists(tbl_key) == 0:
-                return False, "mod table %s not exist...."
+                logger.info("mod table %s not exist...." % tbl_name)
+                return False, "mod table %s not exist...." % tbl_name
             for key, val in para_dict.items():
                 self.__connect.hset(tbl_key, key, val)
             return True, "mod success...."
         except Exception as e:
+            logger.error("_execute_mod, info is %s." % str(e))
             return False, str(e)
 
     @connect_wrapper
@@ -61,11 +67,13 @@ class DbRedis(DbBase):
         try:
             tbl_key = self._get_table_key(tbl_name, key_dict)
             if self.__connect.exists(tbl_key) == 0:
+                logger.info("rmv table %s not exist...." % tbl_name)
                 return False, "rmv table %s not exist...." % tbl_name
 
             self.__connect.delete(tbl_key)
             return True, "rmv success...."
         except Exception as e:
+            logger.error("_execute_rmv, info is %s." % str(e))
             return False, str(e)
 
     def execute(self, db_op_type, tbl_name, key_dict, para_dict):

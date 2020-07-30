@@ -9,7 +9,7 @@ class ParaObject(ObjectBase):
         self.default_value = default_value
 
     def is_key_para(self):
-        return self.__is_key == '1'
+        return self.__is_key == MACRO_IS_TRUE
 
 
 def build_para(para_type, para_name, is_key, default_value):

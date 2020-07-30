@@ -1,6 +1,7 @@
 from module.MocObject import build_moc
 import xml.etree.ElementTree as ET
 import os
+from log.log import logger
 
 
 class MocSingleton:
@@ -32,10 +33,12 @@ class MocSingleton:
         moc_tree = ET.parse(os.path.join('conf', 'Moc.xml')).getroot()
         for moc in moc_tree:
             if 'name' not in moc.attrib or 'type' not in moc.attrib:
+                logger.error("moc.attrib[%s] is error." % moc.attrib)
                 continue
 
             moc_obj = build_moc(moc.attrib['type'], moc.attrib['name'])
             if moc_obj is None:
+                logger.error("get None moc_obj, type is %s, name is %s." % (moc.attrib['type'], moc.attrib['name']))
                 continue
 
             for para in moc:

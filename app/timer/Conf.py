@@ -4,6 +4,6 @@ class TimerConfig(object):
             'id': 'job1',
             'func': 'timer.CheckDefaultValue:check_default_value',
             'trigger': 'interval',
-            'seconds': 3600
+            'seconds': 1800
         }
     ]

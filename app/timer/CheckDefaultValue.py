@@ -81,6 +81,7 @@ def persist_compare_result(moc_name, db_not_in_configure_para, configure_not_in_
 
 
 def check_default_value():
+    logger.info("start to check_default_value...")
     moc_ins = MocSingleton.get_instance()
     for moc_name in moc_ins.moc_object_list:
         ret, db_para_lst = get_para_lst_db(moc_name)
@@ -99,4 +100,5 @@ def check_default_value():
         logger.info("moc_name:%s, configure_not_in_db_para is %s, db_not_in_configure_para is %s."
                     % (moc_name, configure_not_in_db_para, db_not_in_configure_para))
         persist_compare_result(moc_name, db_not_in_configure_para, configure_not_in_db_para)
+    logger.info("check_default_value end...")
 

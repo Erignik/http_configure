@@ -6,7 +6,6 @@ from log.log import logger
 class CmdTextHandle:
     @classmethod
     def get_raw_cmd(cls, cmd):
-        cmd = cmd.upper()
         if cmd.count(':') < 1:
             logger.error('cmd has not :, cmd is %s.' % cmd)
             return None
@@ -20,9 +19,9 @@ class CmdTextHandle:
     @classmethod
     def is_cmd_valid(cls, cmd):
         raw_cmd = cls.get_raw_cmd(cmd)
-        pattern1 = re.compile(r"[A-Z]{3} [A-Z]+:([A-Z]+=[/\\.:&_A-Z0-9\u4E00-\u9FA5']+,)*[A-Z]+=[/\\.:&_A-Z0-9\u4E00-\u9FA5']+;")
+        pattern1 = re.compile(r"[A-Za-z]{3} [A-Za-z]+:([A-Za-z]+=[/\\.:&_A-Za-z0-9\u4E00-\u9FA5']+,)*[A-Za-z]+=[/\\.:&_A-Za-z0-9\u4E00-\u9FA5']+;")
         # maybe lst xxx:;
-        pattern2 = re.compile(r"[A-Z]{3} [A-Z]+:([A-Z]+=[/\\.:&_A-Z0-9\u4E00-\u9FA5']+,)*;")
+        pattern2 = re.compile(r"[A-Za-z]{3} [A-Za-z]+:([A-Za-z]+=[/\\.:&_A-Za-z0-9\u4E00-\u9FA5']+,)*;")
         m1 = pattern1.match(raw_cmd)
         m2 = pattern2.match(raw_cmd)
         return m1 is not None or m2 is not None
@@ -73,5 +72,5 @@ class CmdTextHandle:
                 return False, moc_name, {}
 
             para, value = raw_para.split('=')
-            para_2_val[para] = value
+            para_2_val[para.upper()] = value
         return True, moc_name, para_2_val

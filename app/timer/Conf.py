@@ -10,7 +10,7 @@ class TimerConfig(object):
             'id': 'job2',
             'func': 'timer.BackupDbFile:backup_db_file',
             'trigger': 'interval',
-            'seconds': 5
+            'seconds': 3600
         }
 
     ]

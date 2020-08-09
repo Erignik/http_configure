@@ -24,7 +24,12 @@ class DbRedis(DbBase):
             keys = self.__connect.keys("%s_*" % tbl_name)
             for key in keys:
                 info_dict = self.__connect.hgetall(key)
-                query_result.append(info_dict)
+                # trans bytes to str
+                decode_info_dict = {}
+                for info_key, info_val in info_dict.items():
+                    decode_info_dict[info_key.decode('utf-8')] = info_val.decode('utf-8')
+
+                query_result.append(decode_info_dict)
             return True, query_result
         except Exception as e:
             logger.error("query error, info is %s." % str(e))

@@ -24,3 +24,7 @@ class DbBase:
     @abstractmethod
     def connect(self):
         pass
+
+    @abstractmethod
+    def close(self):
+        pass

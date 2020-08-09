@@ -14,7 +14,7 @@ def get_para_lst_db(moc_name):
     para_lst = []
     for query_dict in query_dict_lst:
         for key, _ in query_dict.items():
-            para_lst.append(key.decode('utf-8'))
+            para_lst.append(key)
     return True, list(set(para_lst))
 
 

@@ -23,8 +23,6 @@ class LstCmd(CmdBase):
             return True
 
         for key, val in query_dict.items():
-            key = key.decode('utf-8')
-            val = val.decode('utf-8')
             for wanted_key, wanted_val in para_2_val.items():
                 if wanted_key == key and val != wanted_val:
                     return False
@@ -40,7 +38,7 @@ class LstCmd(CmdBase):
 
             is_one_record_exist = True
             for key, val in query_dict.items():
-                record_info += "%s=%s;" % (key.decode('utf-8'), val.decode('utf-8'))
+                record_info += "%s=%s;" % (key, val)
             record_info += '\r\n'
         return is_one_record_exist, record_info
 

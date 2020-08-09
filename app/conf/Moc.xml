@@ -16,4 +16,9 @@
         <para type="1" key="1" name="NAME">MOC名称</para>
         <para type="1" key="0" name="INFO" default_value="">额外的信息</para>
     </moc>
+    <moc type="1" name="MocDbFileBackupInfo">
+        <para type="1" key="1" name="SRC" default_value="">DB文件的源路径</para>
+        <para type="1" key="1" name="DST" default_value="">DB备份目的路径:当备份类型为1是,为本地路径.当备份类型为2时,为ftp地址</para>
+        <para type="1" key="1" name="TYPE" default_value="">备份类型:1为本地备份,2为ftp</para>
+    </moc>
 </root>

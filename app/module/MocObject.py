@@ -40,6 +40,10 @@ class MocObject(ObjectBase):
         self.__para_lst = self.__para_lst
         return True, ""
 
+    def post_lst_handle(self, query_dict_lst):
+        self.__para_lst = self.__para_lst
+        return query_dict_lst
+
 
 def build_origin_moc(moc_name):
     exec('from module.%s import %s' % (moc_name, moc_name))

@@ -64,6 +64,8 @@ class LstCmd(CmdBase):
             logger.error("db_obj.query fail. ret is %s, query_dict_lst is %s." % (ret, query_dict_lst))
             return False, "LstCmd error...."
 
+        query_dict_lst = moc_obj.post_lst_handle(query_dict_lst)
+
         ret, record_info = self.__get_format_record(query_dict_lst, para_2_val)
         if not ret:
             return True, "No record find...."

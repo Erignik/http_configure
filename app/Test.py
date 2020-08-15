@@ -8,7 +8,8 @@ def add_moc():
         cmd_obj.execute()
 
 def lst_moc():
-    cmd = 'lst MocAudio:;'
+    #cmd = 'LST MOCAUDIO:;'
+    cmd = 'LST MOCHELP:;'
     cmd_obj = get_cmd_obj(cmd)
     if cmd_obj is not None:
         print(cmd_obj.execute())
@@ -23,13 +24,14 @@ if __name__ == "__main__":
     #    cmd_obj.execute()
     lst_moc()
 
-    cmd = 'ADD MOCDBFILEBACKUPINFO:SRC=D:/src, DST=D:/dst, TYPE=1;'
+    #cmd = 'ADD MOCDBFILEBACKUPINFO:SRC=D:/src, DST=D:/dst, TYPE=1;'
     #cmd = 'ADD MOCDBFILEBACKUPINFO:SRC=D:/src, DST=10.50.64.122, TYPE=2;'
-    #cmd = 'RMV MOCDBFILEBACKUPINFO:SRC=D:/src, DST=10.50.64.122, TYPE=2;'
-    cmd_obj = get_cmd_obj(cmd)
-    if cmd_obj is not None:
-        m, n = cmd_obj.execute()
-        print("info is %s, %s" % (m, n))
+    cmd = 'RMV MOCDBFILEBACKUPINFO:SRC=D:/src, DST=D:/dst, TYPE=1;'
+    #cmd = 'ADD MOCDBFILEBACKUPINFO:SRC=/data/configure/redis_for_configure/data, DST=/home/king/docker_data/http_configure/db, TYPE=1;'
+    #cmd_obj = get_cmd_obj(cmd)
+    #if cmd_obj is not None:
+    #    m, n = cmd_obj.execute()
+    #    print("info is %s, %s" % (m, n))
 
 
     #cmd = 'rmv MocAudio:AUDIOID=1;'

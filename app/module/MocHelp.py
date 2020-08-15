@@ -8,15 +8,12 @@ class MocHelp(MocObject):
         super(MocHelp, self).__init__(obj_name)
 
     def pre_add_cmd_check(self, para_2_val):
-        self.__para_lst = self.__para_lst
         return False, "Not support this cmd..."
 
     def pre_mod_cmd_check(self, para_2_val):
-        self.__para_lst = self.__para_lst
         return False, "Not support this cmd..."
 
     def pre_rmv_cmd_check(self, para_2_val):
-        self.__para_lst = self.__para_lst
         return False, "Not support this cmd..."
 
     def post_lst_handle(self, query_dict_lst):

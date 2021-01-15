@@ -11,6 +11,18 @@ class TimerConfig(object):
             'func': 'timer.BackupDbFile:backup_db_file',
             'trigger': 'interval',
             'seconds': 3600
+        },
+        {
+            'id': 'job3',
+            'func': 'timer.OneSecTrigger:one_sec_trigger',
+            'trigger': 'interval',
+            'seconds': 1
+        },
+        {
+            'id': 'job4',
+            'func': 'timer.OneMinTrigger:one_min_trigger',
+            'trigger': 'interval',
+            'seconds': 60
         }
 
     ]

@@ -23,4 +23,7 @@
     </moc>
     <moc type="1" name="MocHelp">
     </moc>
+    <moc type="1" name="MocCet">
+        <para type="1" key="1" name="Cet" default_value="7:00">收集绿色能量的时间</para>
+    </moc>
 </root>

@@ -4,6 +4,15 @@ from module.MocDbFileBackupInfo import MocDbFileBackupInfo
 import os
 import time
 import shutil
+import datetime
+
+
+def rm_backup_db_7_day_ago(dst):
+    time_7_day_ago = (datetime.datetime.now() - datetime.timedelta(days=7)).strftime('%Y_%m_%d_%H_%M_%S')
+    for dir_time in os.listdir(dst):
+        if dir_time <= time_7_day_ago:
+            logger.info("rm backup db file 7 day ago: %s" % os.path.join(dst, dir_time))
+            shutil.rmtree(os.path.join(dst, dir_time))
 
 
 def do_local_backup(query_dict):
@@ -17,6 +26,9 @@ def do_local_backup(query_dict):
     dst_abs = os.path.join(dst, time_now)
     if os.path.exists(dst_abs):
         shutil.rmtree(dst_abs)
+
+    # try to rm too old file
+    rm_backup_db_7_day_ago(dst)
 
     shutil.copytree(src, dst_abs)
 

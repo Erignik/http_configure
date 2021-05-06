@@ -1,6 +1,6 @@
 configparser==5.0.0
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 redis==3.5.3
 Flask-APScheduler==1.11.0
 APScheduler==3.6.3
